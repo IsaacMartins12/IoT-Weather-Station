@@ -4,10 +4,8 @@ import os
 from datetime import datetime
 import json
 
-# Carrega as variáveis do arquivo .env
 load_dotenv()
 
-# Agora você pode acessar as variáveis de ambiente
 DB_NAME = os.getenv('DB_NAME')
 
 class Database : 

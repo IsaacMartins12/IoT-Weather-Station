@@ -12,36 +12,36 @@ class Mqtt:
         self.database = Database()
 
     def init_mqtt(self):
-        # Configuração do cliente MQTT
+        # MQTT Client configuration
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
 
-        # Conectar ao broker MQTT
+        # Connect the MQTT Broker
     
         self.client.connect(self.MQTT_BROKER, self.MQTT_PORT, 60)
 
-    # Callback quando a conexão é estabelecida
+    # Callback when estabilized connection
     def on_connect(self, client, userdata, flags, rc):
         print(f"Conectado com código de resultado {rc}")
-        # Inscreva-se no tópico
+        # Subscrive in topic
         self.client.subscribe(self.MQTT_TOPIC)
 
-    # Callback quando uma mensagem é recebida
+    # Callback when a received mensage
     def on_message(self, client, userdata, msg):
-        print(f"Mensagem recebida no tópico '{msg.topic}': {msg.payload.decode()}")
+        print(f"Received message in the topic '{msg.topic}': {msg.payload.decode()}")
 
         try:
             data = json.loads(msg.payload.decode())
             # Inserir os dados no banco de dados
             self.database.insert_data(data)
         except json.JSONDecodeError:
-            print("Erro ao decodificar JSON")
+            print("Error decoding JSON")
 
     def start(self):
         
         try :
            self.client.loop_forever()
         except ValueError as e:
-            print(f"Erro de valor: {e}")
+            print(f"Value Error: {e}")
         except Exception as e:
-            print(f"Erro ao conectar ao broker: {e}")
+            print(f"Broker connection error: {e}")

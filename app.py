@@ -6,10 +6,9 @@ from database import Database
 from graphic import Graphic
 from mqtt import Mqtt
 
-# Carrega as variáveis do arquivo .env
+# Load variables .env
 load_dotenv()
 
-# Agora você pode acessar as variáveis de ambiente
 DB_NAME = os.getenv('DB_NAME')
 MQTT_BROKER = os.getenv('MQTT_BROKER')
 MQTT_PORT = os.getenv('MQTT_PORT')

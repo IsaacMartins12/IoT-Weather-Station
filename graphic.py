@@ -8,15 +8,14 @@ import threading
 
 load_dotenv()
 
-# Agora você pode acessar as variáveis de ambiente
 DB_NAME = os.getenv('DB_NAME')
 
 class Graphic:
 
     def __init__(self):
-        # Configuração do gráfico
+        # Graphic configuration
         self.fig, (self.ax1, self.ax2) = plt.subplots(2, 1, figsize=(12, 6))
-        # Atribuir a animação a um atributo da instância
+    
         self.ani = None
 
     def fetch_data(self):
@@ -45,15 +44,15 @@ class Graphic:
         if not timestamps:
             return
 
-        # Limpar os gráficos
+        # Clear graphics
         self.ax1.clear()
         self.ax2.clear()
 
-        # Ativar grade para ambos os eixos
+        # On grid for axis
         self.ax1.grid(True, which='both', color='gray', linestyle='--', linewidth=0.5)
         self.ax2.grid(True, which='both', color='gray', linestyle='--', linewidth=0.5)
 
-        # Plotar temperatura
+        # Plot temperature
         self.ax1.plot(timestamps, temperatures, label='Temperature', color='blue')
         self.ax1.set_title('Temperature over Time')
         self.ax1.set_xlabel('Timestamp')
@@ -61,7 +60,7 @@ class Graphic:
         self.ax1.legend()
         self.ax1.tick_params(axis='x', rotation=90)
 
-        # Plotar umidade
+        # Plota humidity
         self.ax2.plot(timestamps, humidities, label='Humidity', color='orange')
         self.ax2.set_title('Humidity over Time')
         self.ax2.set_xlabel('Timestamp')
@@ -69,18 +68,17 @@ class Graphic:
         self.ax2.legend()
         self.ax2.tick_params(axis='x', rotation=90)
 
-        # Ajustar layout
+        # Resize layout
         plt.tight_layout()
         
     def start(self):
         
         try:
-            # Verifique se há dados antes de criar a animação
+           
             dados = self.plot_data()
             
             self.ani = animation.FuncAnimation(self.fig, self.update_plot, interval=5000)
             
-            # Verifique se self.ani foi inicializado corretamente
             if dados:
                 plt.show()
             else:
@@ -93,6 +91,6 @@ def run_graphic():
     graphic = Graphic()
     graphic.start()
 
-# Iniciar o gráfico em uma thread separada
+# Init graphic in other thread
 thread = threading.Thread(target=run_graphic)
 thread.start()

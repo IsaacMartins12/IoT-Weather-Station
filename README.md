@@ -51,8 +51,8 @@ This project consists of an IoT weather station that collects temperature and hu
     Create a `.env` file in the root directory of the project and add the necessary variables for MongoDB Atlas and the database:
 
     ```env
-    DB_NAME=weather_data  # Database name
-    MQTT_BROKER=broker.mqttdashboard.com  # MQTT broker address
+    DB_NAME= "weather_data.db"  # Database name
+    MQTT_BROKER= "broker.mqttdashboard.com"  # MQTT broker address
     MQTT_PORT = "1883"  # MQTT default port
     MQTT_TOPIC = "wokwi-weather"  # Topic for subscribe
     ```

@@ -1,5 +1,7 @@
 # IoT Weather Station with MQTT and Real-Time Data Visualization
 
+![Alt text](./Captura de tela 2024-09-08 122549.png)
+
 ## 📋 Description
 
 This project consists of an IoT weather station that collects temperature and humidity data using the **DHT22** sensor. The data is sent to an **MQTT broker**, stored in a database (MongoDB via **PyMongo** or **SQLite**), and displayed in interactive, real-time graphs using **Matplotlib**. The station connects to a Wi-Fi network and connect the mqtt host and updates the graphic every 5 seconds.
@@ -106,3 +108,4 @@ Feel free to submit pull requests or report issues on the [Issues page](https://
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
+

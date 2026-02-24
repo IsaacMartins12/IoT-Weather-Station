@@ -1,6 +1,6 @@
 # IoT Weather Station with MQTT and Real-Time Data Visualization
 
-![Alt text](./Captura de tela 2024-09-08 122549.png)
+![Alt text](apresentacao.png)
 
 ## 📋 Description
 
@@ -108,4 +108,5 @@ Feel free to submit pull requests or report issues on the [Issues page](https://
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
+
 
